@@ -20,21 +20,21 @@ sox -v 3 lowvol.mp3 3xvol.mp3 channels 1
 ```
    or directly combine with the previous 
 ```
-     sox -v 3 stereo.mp3 mono.mp3 channels 1 
+sox -v 3 stereo.mp3 mono.mp3 channels 1 
 ```
 3d. in csae of background noise, record some second of silence as noise.mp3, then use the following to produce a clean audio
 ```
 sox noise.mp3 noise.wav trim 0 2
-     sox noise.wav -n noiseprof noise.prof
-     rm noise.wav
-     sox stereo.mp3 mono.mp3 channels 1
-     sox mono.mp3 mono_clear.mp3 noisered noise.prof 0.31
+sox noise.wav -n noiseprof noise.prof
+rm noise.wav
+sox stereo.mp3 mono.mp3 channels 1
+sox mono.mp3 mono_clear.mp3 noisered noise.prof 0.31
 ```
 3e. all previous command can be looped in a bash for processing all audio files.
 
 4. Once all slide.png have a slide.mp3, run the following perl script:
 ```
- #!/usr/bin/perl
+#!/usr/bin/perl
 open(OUT,">list");
 foreach $file (split(/\n/,`ls *.mp3`)) {
      $png = $file;
