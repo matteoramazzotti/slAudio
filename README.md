@@ -33,7 +33,7 @@ this is the procedure I use to rapidly produce videos from a lesson in pdf and a
 3e. all previous command can be looped in a bash for processing all audio files.
 
 4. Once all slide.png have a slide.mp3, run the following perl script:
-
+```
      #!/usr/bin/perl
      open(OUT,">list");
      foreach $file (split(/\n/,`ls *.mp3`)) {
@@ -48,7 +48,7 @@ this is the procedure I use to rapidly produce videos from a lesson in pdf and a
      close OUT;
      `fmpeg -f concat -safe 0 -i list -c copy video.mkv`;
      `rm slide*.mkv`
-
+```
 The final video has a duration equal to the sum of the durations of the audio files and the final video.mkv is pretty in adio and video and is size is approx 680 kb/min (a good compromise using mono audio and a decent video quality).
 
 Hope this helps.
