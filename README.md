@@ -5,9 +5,9 @@ this is the procedure I use to rapidly produce videos from a lesson in pdf and a
 1. save slides (or .odp, .ppt, it's the same) in pdf format.
 
 2. convert the pdf in many png files with the imagemagick command
-
+```
      convert -scene 1 -density 200 lezione.pdf slide_%02d.png
-
+```
 3. record audio files (one per slide) and save them with the same name of the slides, so for slide_01.png name the file slide_01.mp3
 
 3b. if mp3 is stereo,convert them to mono with sox
