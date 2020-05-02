@@ -1,22 +1,28 @@
 # slAudio
-ciao,
-ti descrivo il sistema che uso io per fare presto il pairing audio/video:
 
-1. salvare le slide (o.odp, .ppt, è uguale) in formato pdf.
+this is the procedure I use to rapidly produce videos from a lesson in pdf and a set of audio files, one per slide:
 
-2. convertire il pdf in tanti png col comando imagemagick
+1. save slides (or .odp, .ppt, it's the same) in pdf format.
+
+2. convert the pdf in many png files with the imagemagick command
 
   convert -scene 1 -density 200 lezione.pdf slide_%02d.png
 
-3. registrare gli audio e salvarli con lo stesso nome delle slide, quindi es. slide_01.mp3
+3. record audio files (one per slide) and save them with the same name of the slides, so for slide_01.png name the file slide_01.mp3
 
-3b. se gli mp3 sono stereo conviene portarli a mono
+3b. if mp3 is stereo,convert them to mono with sox
 
   sox stereo.mp3 mono.mp3 channels 1
 
-3c. se il volume è basso l'opzione -v di sox alza/abbassa il volume: io uso -v 3 per ampli 3x
+3c. if volume is low or high sox can adjust it, e.g. to imcrease thevolume 3x use 
 
-3d. se c'è rumore di fondo, registrare alcuni secondi di silenzio su noise.mp3
+  sox -v 3 lowvol.mp3 3xvol.mp3 channels 1
+
+  or directly combine with the previous 
+
+  sox -v 3 stereo.mp3 mono.mp3 channels 1 
+
+3d. in csae of background noise, record some second of silence as noise.mp3, then use the following to produce a clean audio
 
   sox noise.mp3 noise.wav trim 0 2
   sox noise.wav -n noiseprof noise.prof
@@ -24,9 +30,9 @@ ti descrivo il sistema che uso io per fare presto il pairing audio/video:
   sox stereo.mp3 mono.mp3 channels 1
   sox mono.mp3 mono_clear.mp3 noisered noise.prof 0.31
 
-3e. i comandi sox sopra possono essere dentro un for per automatizare tutto, occhio solo al nome dei file finali che devono essere uguali ai nomi dei png. In genere io salvo gli mp3 originali in una cartella e quelli post prodotti li mando nella cartella delle slide .png
+3e. all previous command can be looped in a bash for processing all audio files.
 
-4. lanciare il seguente script nella cartella coi file
+4. Once all slide.png have a slide.mp3, run the following perl script:
 
 #!/usr/bin/perl
 open(OUT,">list");
@@ -40,9 +46,10 @@ foreach $file (split(/\n/,`ls *.mp3`)) {
      print OUT "file $out\n"
 }
 close OUT;
-`ffmpeg -f concat -safe 0 -i list -c copy video.mkv`;
+`fmpeg -f concat -safe 0 -i list -c copy video.mkv`;
 `rm slide*.mkv`
 
-Il video finale video.mkv si vede bene, si sente bene e occupa circa 680 kb/min.
+The final video has a duration equal to the sum of the durations of the audio files and the final video.mkv is pretty in adio and video and is size is approx 680 kb/min (a good compromise using mono audio and a decent video quality).
 
-M.
+Hope this helps.
+MR
