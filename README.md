@@ -1,6 +1,25 @@
 # slidio
 
-this is the procedure I use to rapidly produce videos from a lesson in pdf and a set of audio files, one per slide:
+The slidio (SLIDes with audIO) compiler is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf forat and a bunch of mp3 files, one per slide. 
+```
+USAGE: perl compile.pl lesson01
+```
+The initial folder structure is 
+```
+lesson01
+   mp3/
+        slide_01.mp3
+        ...
+        slide_NN.mp3
+   lesson01.pdf
+```
+slidio will produce:
+- an html index file that displays an interactive page with sill images and an audio player
+- a set of zip files for downloading the whole lesson
+- a video.mkv file with the fulltime lesson
+
+
+It follows a simple alerative to the slidio pipeline, a sort of explained step by step procedure, but the slidio is much more optimized.
 
 1. save slides (or .odp, .ppt, it's the same) in pdf format.
 
