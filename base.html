@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body onload="change(1)">
+<script type="text/javascript">
+window.addEventListener('keydown', function (e) {
+	if (e.keyCode == 37) {
+		change("prev")
+	}
+	if (e.keyCode == 39) {
+		change("next")
+	}
+});
+function change(a) {
+	if (a == "next") {
+		a = cur+1
+	}
+	if (a == "prev") {
+		a = cur-1
+	}
+	if (a > YYYYY) {
+		a = YYYYY
+	}
+	if (a < 1) {
+		a = 1
+	}
+ 	if (a < 10) {
+		document.getElementById("img").src="slide_0"+a+".png";
+		var audio = document.getElementById('audio');
+		var source = document.getElementById('audiosrc');
+		source.src="slide_0"+a+".mp3";
+		audio.load()
+	} else {
+		document.getElementById("img").src="slide_"+a+".png";
+		document.getElementById("audio").src="slide_"+a+".mp3";
+	}
+	cur = a
+}
+function move(a) {
+ 	if(a == "next") {
+		cur = cur+1
+		if (cur > 27) {
+			cur = 27
+		}
+	} else {
+		cur = cur-1
+		if (cur == 0) {
+			cur = 1
+		}
+	}
+	change(cur);
+}
+
+</script>
+<div><center>Slide 
+<a href="javascript:change('prev')"><</a> 
+XXXXX
+<a href="javascript:change('next')">   ></a>
+<br>
+download <a href="ZZZZZ_audio.zip">audio</a>|<a href="ZZZZZ_web.zip">web</a>|<a href="ZZZZZ.pdf">pdf</a>
+</center>
+</div><br>
+<div>
+<center>
+ 
+    <audio id="audio" controls=controls style="width: 800px;"><source id="audiosrc" src="slide_01.mp3" type="audio/mpeg"></audio>
+</center>
+</div>
+<div>
+<center>
+    <img id="img" src="slide_01.png" width=1000>
+</center>
+</div>
+</body>
+</html>
