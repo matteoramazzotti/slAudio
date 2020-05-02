@@ -1,4 +1,4 @@
-# slAudio
+# slidio
 
 this is the procedure I use to rapidly produce videos from a lesson in pdf and a set of audio files, one per slide:
 
