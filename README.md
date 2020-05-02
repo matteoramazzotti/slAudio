@@ -34,20 +34,20 @@ this is the procedure I use to rapidly produce videos from a lesson in pdf and a
 
 4. Once all slide.png have a slide.mp3, run the following perl script:
 
-#!/usr/bin/perl
-open(OUT,">list");
-foreach $file (split(/\n/,`ls *.mp3`)) {
-     $png = $file;
-     $png =~ s/mp3/png/;
-     $out = $file;
-     $out =~ s/mp3/mkv/;
-     print STDERR "  $file + $png -> $out\n";
-     `ffmpeg -y -loop 1 -framerate 1 -i $png -i $file -c:v libx264 -preset veryslow -crf 0 -c:a copy -shortest $out` if (!-e $out);
-     print OUT "file $out\n"
+     #!/usr/bin/perl
+     open(OUT,">list");
+     foreach $file (split(/\n/,`ls *.mp3`)) {
+          $png = $file;
+          $png =~ s/mp3/png/;
+          $out = $file;
+          $out =~ s/mp3/mkv/;
+          print STDERR "  $file + $png -> $out\n";
+          `ffmpeg -y -loop 1 -framerate 1 -i $png -i $file -c:v libx264 -preset veryslow -crf 0 -c:a copy -shortest $out` if (!-e $out);
+          print OUT "file $out\n"
 }
-close OUT;
-`fmpeg -f concat -safe 0 -i list -c copy video.mkv`;
-`rm slide*.mkv`
+     close OUT;
+     `fmpeg -f concat -safe 0 -i list -c copy video.mkv`;
+     `rm slide*.mkv`
 
 The final video has a duration equal to the sum of the durations of the audio files and the final video.mkv is pretty in adio and video and is size is approx 680 kb/min (a good compromise using mono audio and a decent video quality).
 
