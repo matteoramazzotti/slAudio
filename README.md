@@ -1,4 +1,4 @@
-# slide2video
+# slAudio
 ciao,
 ti descrivo il sistema che uso io per fare presto il pairing audio/video:
 
