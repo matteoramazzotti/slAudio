@@ -18,7 +18,7 @@ sox stereo.mp3 mono.mp3 channels 1
 ```
 sox -v 3 lowvol.mp3 3xvol.mp3 channels 1
 ```
-    or directly combine with the previous 
+   or directly combine with the previous 
 ```
      sox -v 3 stereo.mp3 mono.mp3 channels 1 
 ```
