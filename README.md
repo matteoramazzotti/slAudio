@@ -1,6 +1,6 @@
-# slidio
+# talkingSlides
 
-The slidio (SLIDes with audIO) compiler is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf forat and a bunch of mp3 files, one per slide. 
+The talkingSlides is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf forat and a bunch of mp3 files, one per slide. 
 ```
 USAGE: perl compile.pl lesson01
 ```
@@ -13,7 +13,7 @@ lesson01
         slide_NN.mp3
    lesson01.pdf
 ```
-slidio will produce:
+talkingSlides will produce:
 - an html index file that displays an interactive page with sill images and an audio player
 - a set of zip files for downloading the whole lesson
 - a video.mkv file with the fulltime lesson
