@@ -1,6 +1,7 @@
 # talkingSlides
 
-talkingSlides is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf format and a bunch of mp3 files, one per slide. Personally I produce slides in libreoffice imporess (and save it as pdf) and then I talk on slides (one by one) using the Ubuntu default Sound Recorder. The program will in turn allow slides to talk.
+talkingSlides is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf format and a bunch of mp3 files, one per slide. Personally I produce slides in libreoffice impress (and save it as pdf) and then I talk on slides (one by one) using the Ubuntu default Sound Recorder. The program will basically allow slides to talk.
+
 ```
 USAGE: talkMyslides.pl lesson01
 ```
