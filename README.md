@@ -1,8 +1,8 @@
 # talkingSlides
 
-The talkingSlides is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf forat and a bunch of mp3 files, one per slide. 
+talkingSlides is the perl script I use for the automatic production of video lessons from a static prestantation (slides) in pdf format and a bunch of mp3 files, one per slide. Personally I produce slides in libreoffice imporess (and save it as pdf) and then I talk on slides (one by one) using the Ubuntu default Sound Recorder. The program will in turn allow slides to talk.
 ```
-USAGE: perl compile.pl lesson01
+USAGE: talkMyslides.pl lesson01
 ```
 The initial folder structure is 
 ```
@@ -13,13 +13,18 @@ lesson01
         slide_NN.mp3
    lesson01.pdf
 ```
-talkingSlides will produce:
+talkingSlides will
+- learn the backgroud noise profile from the initial 2 seconds of slide_01.mp3
+- denoise all other audio files
+- produce a bunch of .png files from the main lesson.pdf file
+
+and will produce
+
 - an html index file that displays an interactive page with sill images and an audio player
 - a set of zip files for downloading the whole lesson
-- a video.mkv file with the fulltime lesson
+- a video (mkv container, ~ 850 KB/min, 50 MB/h) with the all talking slides merged (video h264 1 fps, audio mp3 44100 Hz mono) 
 
-
-It follows a simple alerative to the slidio pipeline, a sort of explained step by step procedure, but the slidio is much more optimized.
+It follows a simple step-by-step procedure to explain the talkingSlide approach:
 
 1. save slides (or .odp, .ppt, it's the same) in pdf format.
 
@@ -68,8 +73,6 @@ close OUT;
 `fmpeg -f concat -safe 0 -i list -c copy video.mkv`;
 `rm slide*.mkv`
 ```
-The final video has a duration equal to the sum of the durations of the audio files and the final video.mkv is pretty in adio and video and is size is approx 680 kb/min (a good compromise using mono audio and a decent video quality).
-
 Hope this helps.
 
 MR
