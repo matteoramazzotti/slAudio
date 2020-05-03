@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 if (!$ARGV[0]) {
-	print STDERR "PLease specify the lesson folder\n";
+	print STDERR "USAGE: talkMySlides lesson_folder\n\n";
+	print STDERR "cPlease specify the lesson folder\n";
 	exit;
 }
 #START:
