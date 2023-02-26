@@ -21,9 +21,9 @@ talkingSlides will
 
 and will produce
 
-- an html index file that displays an interactive page with sill images and an audio player
+- an html index file that displays an interactive page with still images and an audio player
 - a set of zip files for downloading the whole lesson
-- a video (mkv container, ~ 850 KB/min, 50 MB/h) with the all talking slides merged (video h264 1 fps, audio mp3 44100 Hz mono) 
+- a video (mkv container, ~ 850 KB/min, 50 MB/h) with all the talking slides merged (video h264 1 fps, audio mp3 44100 Hz mono) 
 
 It follows a simple step-by-step procedure to explain the talkingSlide approach:
 
